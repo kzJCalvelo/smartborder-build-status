@@ -142,7 +142,11 @@ async function loadBadge(badgeUrl) {
 function applyFilters() {
   rows.forEach((row) => {
     const status = row.dataset.status || "unknown";
-    const visible = activeStatus === "all" || status === activeStatus;
+    const visible =
+      activeStatus === "all" ||
+      status === activeStatus ||
+      status === "loading";
+    row.classList.toggle("row-filtered", !visible);
     row.hidden = !visible;
   });
 }
